@@ -6,13 +6,13 @@ class InforEmployees extends Component {
     return (
       <tr>
         <td>{index + 1}</td>
-        <td>
+        <td style={{ width: 130, height: 100 }}>
           <img
+            style={{ width: 130, height: 100 }}
             src={employee.account.image}
             className="img-responsive"
             alt="Image"
           />
-          >
         </td>
         <td>
           <h5>{employee.first_name}</h5>

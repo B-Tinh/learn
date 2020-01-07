@@ -34,10 +34,14 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        <div className="navbar navbar-default">
-          <a className="navbar-brand">Learn</a>
-          <ul className="nav navbar-nav">{this.showMenus(menus)}</ul>
-        </div>
+        <nav className="navbar navbar-default">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <a className="navbar-brand">Learn</a>
+            </div>
+            <ul className="nav navbar-nav" style={{textAlign: "center"}}>{this.showMenus(menus)}</ul>
+          </div>
+        </nav>
       </div>
     );
   }

@@ -1,9 +1,25 @@
 import React, { Component } from "react";
 import InforEmployees from "./InforEmployees";
-
+import { connect } from 'react-redux';
+import callApi from './../utils/apiCaller';
 class ListEmployees extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      employees: []
+    }
+  }
+
+  componentDidMount(){
+    callApi('employees', 'GET', null).then(res =>{
+      this.setState({
+        employees: res.data
+      })
+    })
+  }
   render() {
-    const employees = [];
+    const {employees} = this.state;
     const infoEmployee = employees.map((employee, index) => {
       return <InforEmployees key={index} employee={employee} index={index} />;
     });
@@ -36,4 +52,10 @@ class ListEmployees extends Component {
   }
 }
 
-export default ListEmployees;
+const mapStateToProps = state => {
+  return {
+    employees: state.employees
+  };
+}
+
+export default connect(mapStateToProps, null)(ListEmployees);
